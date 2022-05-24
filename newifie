@@ -1,0 +1,18 @@
+var change = new GlideRecord("change_request");
+change.short_description = current.short_description;
+change.description = current.description;
+change.cmdb_ci = current.cmdb_ci;
+change.priority = current.priority;
+change.type = current.type;
+change.u_change_overview = current.u_change_overview
+//the last line is for a custom field, if you have such 
+
+						
+var sysID = change.insert();
+
+current.rfc = sysID;
+var mySysID = current.update();
+
+gs.addInfoMessage("Change " + change.number + " created");
+action.setRedirectURL(change);
+action.setReturnURL(current);
